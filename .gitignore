@@ -1,0 +1,19 @@
+node_modules/
+dist/
+coverage/
+*.log
+.env
+.env.*
+!.env.example
+# hardhat
+packages/contracts/artifacts/
+packages/contracts/cache/
+packages/contracts/ignition/deployments/
+# indexer data
+packages/indexer/data/
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+# misc
+.DS_Store
+Thumbs.db

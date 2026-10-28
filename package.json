@@ -1,0 +1,24 @@
+{
+  "name": "reorg-safe-escrow",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Reorg-safe, failover-resilient EVM escrow indexer with an EIP-712 gasless-release escrow contract and a React/wagmi dashboard",
+  "license": "MIT",
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=22.5"
+  },
+  "scripts": {
+    "build:contracts": "npm run -w @reorg-safe/contracts build",
+    "test": "npm run -ws --if-present test",
+    "typecheck": "npm run -ws --if-present typecheck",
+    "lint": "npm run -ws --if-present lint",
+    "node": "npm run -w @reorg-safe/contracts node",
+    "indexer": "npm run -w @reorg-safe/indexer dev",
+    "web": "npm run -w @reorg-safe/web dev",
+    "chaos": "npm run -w @reorg-safe/chaos start"
+  }
+}

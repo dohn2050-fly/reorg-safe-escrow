@@ -1,0 +1,21 @@
+{
+  "name": "@reorg-safe/chaos",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "End-to-end chaos runner: flaky RPC proxies, forced reorgs via snapshot/revert, and consistency assertions against the indexer",
+  "scripts": {
+    "start": "tsx src/run.ts",
+    "proxy": "tsx src/flaky-proxy.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@reorg-safe/shared": "*",
+    "viem": "^2.57.12"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "tsx": "^4.23.15",
+    "typescript": "~5.9.0"
+  }
+}

@@ -1,0 +1,49 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: build · test · typecheck
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Compile contracts and export ABIs
+        run: npm run build:contracts
+      - name: Contract tests (Solidity + viem)
+        run: npm run -w @reorg-safe/contracts test
+      - name: Indexer tests
+        run: npm run -w @reorg-safe/indexer test
+      - name: Typecheck all workspaces
+        run: npm run typecheck
+      - name: Build web
+        run: npm run -w @reorg-safe/web build
+
+  chaos:
+    name: chaos scenario (reorg + failover)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build:contracts
+      - name: Run chaos scenario
+        run: npm run chaos

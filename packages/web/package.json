@@ -1,0 +1,28 @@
+{
+  "name": "@reorg-safe/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "React + wagmi dashboard: wallet-connected escrow actions, gasless EIP-712 release, live indexer health and reorg log",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@reorg-safe/shared": "*",
+    "@tanstack/react-query": "^5.105.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "viem": "^2.57.12",
+    "wagmi": "^3.7.9"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.0.0",
+    "typescript": "~5.9.0",
+    "vite": "^8.3.5"
+  }
+}
